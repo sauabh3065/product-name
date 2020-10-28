@@ -23,14 +23,4 @@ router.get("/getuser/:id",auth.requireToken,commonFunctions.verifyAdmin,user_con
 router.post("/blockuser/:id",auth.requireToken,commonFunctions.verifyAdmin,user_controller.blockUser);
 router.post("/unblockuser/:id",auth.requireToken,commonFunctions.verifyAdmin,user_controller.unblockUser)
 
-
-
-
-
-
-
-
-
-
-
 module.exports = router;

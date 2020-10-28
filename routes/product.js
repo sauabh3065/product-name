@@ -1,16 +1,21 @@
 const express = require("express");
 const router = express.Router();
-// const ProductController = require("../controllers/productcontroller");
-const productController = require("../controllers/productController");
+const categoryController = require("../controllers/categoryController");
+const subcategoryController = require("../controllers/subcategoryController");
+
 const auth = require("../authent/auth");
 const { Router } = require("express");
 const commonFunctions = require("../modules/commonFunctions")
 
-router.post("/addCategory",productController.addCategory);
-router.get("/getAllCategory",productController.getAllCategory);
-router.put("/deleteCategory/:id",productController.deleteCategory)
-router.put("/updateCategory",productController.updateCategory)
+router.post("/addCategory",categoryController.addCategory);
+router.get("/getAllCategory",categoryController.getAllCategory);
+router.put("/deleteCategory/:id",categoryController.deleteCategory)
+router.put("/updateCategory",categoryController.updateCategory)
 
+
+router.post("/addsubCategory",subcategoryController.addsubCategory);
+router.put("/updatesubCategory",subcategoryController.updateSubCategory)
+router.put("/deletesubCategory",subcategoryController.deleteSubCategory);
 
 
 

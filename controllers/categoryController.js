@@ -1,4 +1,4 @@
-const { cateogryModel } = require("../models/productmodel");
+const { cateogryModel } = require("../models/Category");
 const joi = require("joi");
 var md5 = require("md5");
 const { Error } = require("mongoose");
@@ -63,7 +63,7 @@ exports.deleteCategory = async (req, res) => {
   }
 };
 
-//=======================================================================update=========================================================
+//=======================================================================update with ID========================================================================================================
 exports.updateCategory = async (req, res) => {
   try {
     console.log(req.body.id, req.body.name, "hit");
