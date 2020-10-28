@@ -1,0 +1,8 @@
+{
+	"projectName": "authenticate",
+	"base_url": "http://localhost:3000/",
+	"accountSid" :  "ACba76650279b84b581805535e08421eb0",
+    "authToken" : "071381c74086ca759835361ba6ac2a48",
+	"SMTP_PASS" : "",
+	"TOKEN_SECRET":"7bc78545b1a3923cc1e1e19523fd5c3f20b409509"
+}
