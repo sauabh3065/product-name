@@ -49,16 +49,17 @@ exports.getAllCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
   try {
-    console.log("hit",req.body.id)
-    let del = await subcategoryModel.deleteMany({categoryId:req.body.id});
-    let del2 = await cateogryModel.deleteMany({_id:req.body.id})
-    console.log(del,del2,"delete");
-    res.json({message:del ,del2})
-  }catch (error) {
+    console.log("hit", req.body.id);
+    let del = await subcategoryModel.deleteMany({ categoryId: req.body.id });
+    if (del) {
+      let del2 = await cateogryModel.deleteMany({ _id: req.body.id });
+      console.log(del, del2, "delete");
+    }
+    res.json({ message: del, response: del2 });
+  } catch (error) {
     res.status(401).json({ message: error });
   }
 };
-
 
 //=======================================================================update with ========================================================================================================
 exports.updateCategory = async (req, res) => {
