@@ -5,5 +5,5 @@ const subcategorySchema = new mongoose.Schema({
   categoryId: { type: mongoose.Schema.Types.ObjectId, ref: "category" },
 });
 
-
+ 
 exports.subcategoryModel = mongoose.model("subcategory",subcategorySchema);

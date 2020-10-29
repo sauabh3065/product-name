@@ -9,7 +9,7 @@ const commonFunctions = require("../modules/commonFunctions")
 
 router.post("/addCategory",categoryController.addCategory);
 router.get("/getAllCategory",categoryController.getAllCategory);
-router.put("/deleteCategory/:id",categoryController.deleteCategory)
+router.put("/deleteCategory",categoryController.deleteCategory)
 router.put("/updateCategory",categoryController.updateCategory)
 
 

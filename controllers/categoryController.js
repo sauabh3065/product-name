@@ -7,6 +7,7 @@ const { verify, TokenExpiredError } = require("jsonwebtoken");
 const commonFunction = require("../modules/commonFunctions");
 const auth = require("../authent/auth");
 var params = require("params");
+const { subcategoryModel } = require("../models/subcategory");
 
 exports.addCategory = async function (req, res) {
   try {
@@ -48,27 +49,25 @@ exports.getAllCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
   try {
-    let deletecat = await cateogryModel.findOneAndDelete(
-      req.body.id || req.headers.id || req.params.id
-    );
-    console.log("here");
-    if (deletecat) {
-      console.log("Got deleted. ");
-      res.status(200).json({ deletecat });
-    } else {
-      res.status(400).json({ message: "Can't delete category right now. " });
-    }
-  } catch (err) {
-    res.status(400).send(err);
+    console.log("hit",req.body.id)
+    let del = await subcategoryModel.deleteMany({categoryId:req.body.id});
+    let del2 = await cateogryModel.deleteMany({_id:req.body.id})
+    console.log(del,del2,"delete");
+    res.json({message:del ,del2})
+  }catch (error) {
+    res.status(401).json({ message: error });
   }
 };
 
-//=======================================================================update with ID========================================================================================================
+
+//=======================================================================update with ========================================================================================================
 exports.updateCategory = async (req, res) => {
   try {
     console.log(req.body.id, req.body.name, "hit");
-    let updateData = await cateogryModel.findOneAndUpdate({
-      _id: req.body.id || req.headers.id || req.params.id},
+    let updateData = await cateogryModel.findOneAndUpdate(
+      {
+        _id: req.body.id || req.headers.id || req.params.id,
+      },
       { $set: { name: req.body.name } },
       { new: true }
     );
