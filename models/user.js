@@ -20,14 +20,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
-  verified: {
-    type: Number,
-    default: 0,
-  },
-  is_otp_verified: {
-    type: Number,
-    default: 0,
-  },
   admin: {
     type: Boolean,
     default: false,

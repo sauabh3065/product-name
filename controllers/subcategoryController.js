@@ -60,7 +60,7 @@ exports.deletesubCategory = async (req, res) => {
     console.log("hit", req.body.id);
     let del = await productModel.deleteMany({subcategoryId: req.body.id });
     if (del) {
-      let del2 = await subcategoryModel.deleteMany({ _id: req.body.id });
+      let del2 = await subcategoryModel.deleteOne({ _id: req.body.id });
       console.log(del, del2, "delete");
     }
     res.json({ message: del, response: del2 });

@@ -25,7 +25,6 @@ router.put("/deletesubCategory",subcategoryController.deletesubCategory);
 
 router.post("/addProduct",productController.addProduct);
 router.put("/updateProduct",productController.updateProduct)
-
 router.put("/deleteProduct",productController.deleteProduct);
 
 
