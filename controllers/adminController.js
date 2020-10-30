@@ -1,5 +1,5 @@
 const { UserModel } = require("../models/user");
-const joi = require("joi");
+// const joi = require("joi");
 const { Error } = require("mongoose");
 // const { generateToken, sendotp } = require("../modules/commonFunctions");
 const { verify, TokenExpiredError } = require("jsonwebtoken");

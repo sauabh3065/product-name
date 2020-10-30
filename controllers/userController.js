@@ -4,13 +4,10 @@ var md5 = require("md5");
 const { Error } = require("mongoose");
 const { generateToken, sendotp } = require("../modules/commonFunctions");
 const { verify, TokenExpiredError } = require("jsonwebtoken");
-const twilio = require("twilio");
 const commonFunction = require("../modules/commonFunctions");
 const auth = require("../authent/auth");
 var params = require("params");
-// const {
-//   UsageRecordInstance,
-// } = require("twilio/lib/rest/supersim/v1/usageRecord");
+
 
 //-----------------------------------------------------------------------SignUp//-----------------------------------------------------------------------------
 
