@@ -1,5 +1,6 @@
 const { subcategoryModel } = require("../models/subcategory");
 const { cateogryModel } = require("../models/Category");
+const {productModel}= require('../models/product')
 const joi = require("joi");
 const { Error } = require("mongoose");
 const { generateToken, sendotp } = require("../modules/commonFunctions");
@@ -54,16 +55,16 @@ exports.updateSubCategory = async (req, res) => {
 };
 
 //--------------------------------------------------------------delet wiith id-------------------------------------------------------
-
-exports.deleteSubCategory = async (req,res) => {
-try{
-  let deleteSubCategory = await subcategoryModel.deleteOne({_id:req.body.id});
-  if(!deleteSubCategory){
-    throw new Error("Cant delete category right now. ");
+exports.deletesubCategory = async (req, res) => {
+  try {
+    console.log("hit", req.body.id);
+    let del = await productModel.deleteMany({subcategoryId: req.body.id });
+    if (del) {
+      let del2 = await subcategoryModel.deleteMany({ _id: req.body.id });
+      console.log(del, del2, "delete");
+    }
+    res.json({ message: del, response: del2 });
+  } catch (error) {
+    res.status(401).json({ message: error });
   }
-  return res.json({deletedData:deleteSubCategory});
-}catch (error) {
-  res.status(401).json({ message: error });
-}
-
-}
+};

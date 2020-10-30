@@ -19,12 +19,13 @@ router.put("/updateCategory",categoryController.updateCategory)
 
 router.post("/addsubCategory",subcategoryController.addsubCategory);
 router.put("/updatesubCategory",subcategoryController.updateSubCategory)
-router.put("/deletesubCategory",subcategoryController.deleteSubCategory);
+router.put("/deletesubCategory",subcategoryController.deletesubCategory);
 
 //--------------------------------------Routes of products------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 router.post("/addProduct",productController.addProduct);
 router.put("/updateProduct",productController.updateProduct)
+
 router.put("/deleteProduct",productController.deleteProduct);
 
 

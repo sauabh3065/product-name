@@ -8,6 +8,7 @@ const commonFunction = require("../modules/commonFunctions");
 const auth = require("../authent/auth");
 var params = require("params");
 const { subcategoryModel } = require("../models/subcategory");
+const { productModel } = require("../models/product");
 
 exports.addCategory = async function (req, res) {
   try {
@@ -50,12 +51,15 @@ exports.getAllCategory = async (req, res) => {
 exports.deleteCategory = async (req, res) => {
   try {
     console.log("hit", req.body.id);
-    let del = await subcategoryModel.deleteMany({ categoryId: req.body.id });
-    if (del) {
-      let del2 = await cateogryModel.deleteMany({ _id: req.body.id });
-      console.log(del, del2, "delete");
+    let delPro = await productModel.deleteMany({categoryId:req.body.id || req.params.id})
+    if(delPro){
+      var delSub = await subcategoryModel.deleteMany({categoryId:req.body.id  || req.params.id });
     }
-    res.json({ message: del, response: del2 });
+    if (delSub) {
+      let delCat = await cateogryModel.deleteOne({ _id: req.body.id  || req.params.id});
+      console.log(delSub, delCat, "delete");
+    }
+    res.json({response:delCat});
   } catch (error) {
     res.status(401).json({ message: error });
   }

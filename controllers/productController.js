@@ -56,14 +56,14 @@ exports.updateProduct = async (req, res) => {
 //--------------------------------------------------------------delet wiith id-------------------------------------------------------
 
 exports.deleteProduct = async (req,res) => {
-try{
-  let delProduct = await productModel.deleteOne({_id:req.body.id ||req.params.id});
-  if(!delProduct){
-    throw new Error("Cant delete category right now. ");
-  }
-  return res.json({deletedData:delProduct});
-}catch (error) {
-  res.status(401).json({ message: error });
-}
-
-}
+    try{
+      let delProduct = await subcategoryModel.deleteOne({_id:req.body.id});
+      if(!delProduct){
+        throw new Error("Cant delete category right now. ");
+      }
+      return res.json({deletedData:delProduct});
+    }catch (error) {
+      res.status(401).json({ message: error });
+    }
+    
+    }

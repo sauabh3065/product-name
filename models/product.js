@@ -8,6 +8,7 @@ const productSchema = new mongoose.Schema({
   },
   price: Number,
   subcategoryId: { type: mongoose.Schema.Types.ObjectId, ref: "subcategory" },
+  categoryId: { type: mongoose.Schema.Types.ObjectId, ref: "category" },
 });
 
 exports.productModel = mongoose.model("products", productSchema);
