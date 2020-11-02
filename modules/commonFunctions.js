@@ -14,6 +14,7 @@ exports.generateToken = (user) => {
 exports.verifyAdmin = async (req, res, next) => {
   try {
     let isAdmin = req.user.user.admin;
+    console.log(req.user.user,"s")
     if (isAdmin) {
       console.log("welcome admin");
       next();

@@ -45,14 +45,16 @@ exports.getAllUser = async (req, res, next) => {
 
 exports.blockUser = async (req, res, next) => {
     try {
-      console.log("blocked user appi hit.");
+      console.log(req.body.id,"blocked user appi hit.");
       let blockedUser = await UserModel.findByIdAndUpdate(
-        { _id: req.body.id || req.params.id },
-        { blocked: true },
+        { _id:req.body.id},
+        {blocked :true },
         { new: true }
       );
-      if (blockedUser) {
-        res.status(200).json({ message: ` ${blockedUser.name} is blocked now` });
+      
+      console.log(blockedUser.blocked,"user")
+      if (blockedUser.blocked) {
+        res.status(200).json({ message: ` ${blockedUser.email} is blocked now` });
       } else {
         res.status(200).json({ message: "unable to block user" });
       }
@@ -76,7 +78,7 @@ exports.blockUser = async (req, res, next) => {
       if (unblockedUser) {
         res
           .status(200)
-          .json({ message: `${unblockedUser.name}  is unblocked now` });
+          .json({ message: `${unblockedUser.email}  is unblocked now` });
       } else {
         res.status(200).json({ message: "unable to unblock user" });
       }
