@@ -15,7 +15,7 @@ router.delete("/deleteuser",auth.requireToken,commonFunctions.verifyAdmin,adminC
 router.get("/userdetails",auth.requireToken,adminController.getUserById); // user 
 router.get("/getAllUser",auth.requireToken,commonFunctions.verifyAdmin,adminController.getAllUser);// only by admin
 router.get("/getuser",auth.requireToken,commonFunctions.verifyAdmin,adminController.getUserById); // only by admin
-router.put("/blockandunblockuser",adminController.blockAndUnblockUser); // only by admin
+router.put("/blockandunblockuser",auth.requireToken,commonFunctions.verifyAdmin,adminController.blockAndUnblockUser); // only by admin
 
 
 //--------------------------------------------------------------routes OF PRODUCT category -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
