@@ -67,3 +67,15 @@ exports.deleteProduct = async (req,res) => {
     }
     
     }
+
+//=-----------------------------------------------------get all products--------------------------------------------------------------//
+exports.getAllProducts = async (req,res) =>{
+  try{
+    let getProducts = await productModel.find({});
+    if (getProducts){
+      res.status(200).json({ "All products are  ": getProducts });
+  }
+}catch (error) {
+    res.status(401).json({ message: error.message });
+  }
+}

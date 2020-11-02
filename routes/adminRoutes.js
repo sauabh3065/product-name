@@ -8,11 +8,11 @@ const commonFunctions = require("../modules/commonFunctions")
 
 
 
-router.delete("/deleteuser/:id",auth.requireToken,adminController.deleteUser);
+router.delete("/deleteuser",auth.requireToken,adminController.deleteUser);
 router.get("/userdetails",auth.requireToken,adminController.getUserById);
 router.get("/getAllUser",auth.requireToken,commonFunctions.verifyAdmin,adminController.getAllUser);
-router.get("/getuser/:id",auth.requireToken,commonFunctions.verifyAdmin,adminController.getUserById);
+router.get("/getuser",auth.requireToken,commonFunctions.verifyAdmin,adminController.getUserById);
 router.put("/blockuser",auth.requireToken,commonFunctions.verifyAdmin,adminController.blockUser);
-router.post("/unblockuser/",auth.requireToken,commonFunctions.verifyAdmin,adminController.unblockUser);
+router.post("/unblockuser",auth.requireToken,commonFunctions.verifyAdmin,adminController.unblockUser);
 
 module.exports = router;
