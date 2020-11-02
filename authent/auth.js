@@ -2,6 +2,10 @@ const connection = require("../modules/db_connection");
 const { UserModel } = require("../models/user");
 const jwt = require("jsonwebtoken");
 const config = require('../config/development.json')
+
+
+
+
 exports.requireToken = async (req, res, next) => {
   try {
     const authHeader = req.headers["authorization"];

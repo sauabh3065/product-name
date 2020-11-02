@@ -12,19 +12,19 @@ const mongoose = require("../modules/db_connection");
 
 exports.addProduct = async function (req, res) {
   try {
-    let {name,subcategoryId,price} = req.body
+    let {name,subcategoryId,categoryId,price} = req.body
     // console.log("hit",data.name)
     let isProductExist = await productModel.findOne({
       name:name,
     });
     if (isProductExist) {
-      throw new Error(`${name} subcategory is already defiend.`);
+      throw new Error(`${name}  product is already defiend.`);
     }
     let a = new productModel(req.body);
     let saveProduct = await a.save();
     console.log("hit", saveProduct);
     if (!saveProduct) {
-      throw new Error("unable to add the category");
+      throw new Error("unable to add the Product ");
     }
     res.json({ message: saveProduct });
   } catch (err) {
@@ -59,7 +59,7 @@ exports.deleteProduct = async (req,res) => {
     try{
       let delProduct = await subcategoryModel.deleteOne({_id:req.body.id});
       if(!delProduct){
-        throw new Error("Cant delete category right now. ");
+        throw new Error("Cant delete product right now. ");
       }
       return res.json({deletedData:delProduct});
     }catch (error) {
