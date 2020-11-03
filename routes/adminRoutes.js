@@ -45,7 +45,7 @@ router.put("/product/deletesubCategory",auth.requireToken,commonFunctions.verify
 
 //------------------------------------------------------ROUTES OF PRODUCTS PRODCTS------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-router.post("/product/addProduct",upload.any(),productController.addProduct);  //access only by admin
+router.post("/product/addProduct",upload.any(),auth.requireToken,commonFunctions.verifyAdmin,productController.addProduct);  //access only by admin
 router.put("/product/updateProduct",auth.requireToken,commonFunctions.verifyAdmin,productController.updateProduct);  //access only by admin
 router.put("/product/deleteProduct",auth.requireToken,commonFunctions.verifyAdmin,productController.deleteProduct); //access only by admin
 router.get("/product/getallProducts",auth.requireToken,commonFunctions.verifyAdmin,productController.getAllProducts); //access only by admin
