@@ -16,16 +16,16 @@ exports.addProduct = async function (req, res) {
     let file = req.files;
 
     console.log(data,file,"lk");
-    let name = req.body.name;
+    let name = data.name;
     // console.log("hit",data.name)
     let isProductExist = await productModel.findOne({
-      name: name,
+      name:name,
     });
     if (isProductExist) {
       throw new Error(`${name}  product is already defiend.`);
     }
     if(file){
-      console.log(file[0].filename,"filename")
+      // console.log(file[0].filename,"filename")
       data.image = `/productimage/${file[0].filename}`
     }
 

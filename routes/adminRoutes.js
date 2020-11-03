@@ -21,11 +21,8 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({storage:storage});
-
-
-
-//--------------------------------------------------ROUTES for USERS------------------------------------------------------------------
-
+//-------------------------------------------------- - ROUTES for USERS------------------------------------------------------------------
+ 
 router.delete("/deleteuser",auth.requireToken,commonFunctions.verifyAdmin,adminController.deleteUser);  //by user and admin both
 router.get("/userdetails",auth.requireToken,adminController.getUserById); // user 
 router.get("/getAllUser",auth.requireToken,commonFunctions.verifyAdmin,adminController.getAllUser);// only by admin
@@ -33,22 +30,22 @@ router.get("/getuser",auth.requireToken,commonFunctions.verifyAdmin,adminControl
 router.put("/blockandunblockuser",adminController.blockAndUnblockUser); // only by admin
 
 
-//--------------------------------------------------Routes OF PRODUCT Category -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------- Routes OF PRODUCT Category -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 router.post("/product/addCategory",auth.requireToken,commonFunctions.verifyAdmin,categoryController.addCategory); //access only by admin
 router.get("/product/getAllCategory",auth.requireToken,commonFunctions.verifyAdmin,categoryController.getAllCategory); //access only by admin
 router.put("/product/deleteCategory",auth.requireToken,commonFunctions.verifyAdmin,categoryController.deleteCategory) //access only by admin
 router.put("/product/updateCategory",auth.requireToken,commonFunctions.verifyAdmin,categoryController.updateCategory) //access only by admin
 
-//-------------------------------------------------------------routes of PRODUCT Subcategory------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------Routes of PRODUCT Subcategory------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 router.post("/product/addsubCategory",auth.requireToken,commonFunctions.verifyAdmin,subcategoryController.addsubCategory);  //access only by admin
 router.put("/product/updatesubCategory",auth.requireToken,commonFunctions.verifyAdmin,subcategoryController.updateSubCategory)  //access only by admin
 router.put("/product/deletesubCategory",auth.requireToken,commonFunctions.verifyAdmin,subcategoryController.deletesubCategory);  //access only by admin
 
-//-------------------------------------------------------------ROUTES OF PRODUCTS PRODCTS------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------ROUTES OF PRODUCTS PRODCTS------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-router.post("/addProduct",upload.any(),productController.addProduct);  //access only by admin
+router.post("/product/addProduct",upload.any(),productController.addProduct);  //access only by admin
 router.put("/product/updateProduct",auth.requireToken,commonFunctions.verifyAdmin,productController.updateProduct);  //access only by admin
 router.put("/product/deleteProduct",auth.requireToken,commonFunctions.verifyAdmin,productController.deleteProduct); //access only by admin
 router.get("/product/getallProducts",auth.requireToken,commonFunctions.verifyAdmin,productController.getAllProducts); //access only by admin
